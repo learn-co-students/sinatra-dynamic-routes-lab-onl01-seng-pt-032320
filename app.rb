@@ -2,8 +2,8 @@ require_relative 'config/environment'
 
 class App < Sinatra::Base
   get "/reversename/:name" do
-    @user_name = params[:name]
-    "Goodbye, #{@user_name}."
+    @name = params[:name]
+    "#{@name.reverse}"
   end
 
   get "/square/:number" do
@@ -13,18 +13,39 @@ class App < Sinatra::Base
   end
 
   get "/say/:number/:phrase" do
-    @user_name = params[:name]
-    "Goodbye, #{@user_name}."
+    @number = params[:number].to_i
+    @phrase = params[:phrase]
+    string = ""
+    @number.times do
+      string += @phrase
+    end
+    string
   end
 
   get "/say/:word1/:word2/:word3/:word4/:word5" do
-    @user_name = params[:name]
-    "Goodbye, #{@user_name}."
+    @word1 = params[:word1]
+    @word2 = params[:word2]
+    @word3 = params[:word3]
+    @word4 = params[:word4]
+    @word5 = params[:word5]
+    phrase = [@word1, @word2, @word3, @word4, @word5].join(" ")
+    "#{phrase}."
   end
 
   get "/:operation/:number1/:number2" do
-    @user_name = params[:name]
-    "Goodbye, #{@user_name}."
+    @operation = params[:operation]
+    @number1 = params[:number1]
+    @number2 = params[:number2]
+    if @operation == "add"
+      total = @number1.to_i + @number2.to_i
+    elsif @operation == "subtract"
+      total = @number1.to_i - @number2.to_i
+    elsif @operation == "multiply"
+      total = @number1.to_i * @number2.to_i
+    elsif @operation == "divide"
+      total = @number1.to_i / @number2.to_i
+    end
+    "#{total.to_s}"
   end
 
 end
