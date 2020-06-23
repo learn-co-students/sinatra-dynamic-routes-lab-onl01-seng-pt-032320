@@ -25,8 +25,13 @@ class App < Sinatra::Base
   end
 
    get '/say/:word1/:word2/:word3/:word4/:word5' do
-   binding.pry
-   params["word1"].to_s
-   end
+   #binding.pry
+  # params["word1"] + " " + params["word2"] + " " + params["word3"] + " " + params["word4"] + " " + params["word5"] + "."
+  "#{params["word1"]}" + " " + "#{params["word2"]}" + " " + "#{params["word3"]}" + " " + "#{params["word4"]}" + " " + "#{params["word5"]}" "."
+  end
  
+  get '/multiply/:num1/:num2' do
+#binding.pry 
+params[:num1].to_i * params[:num2].to_i
+  end 
 end
