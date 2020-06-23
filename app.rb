@@ -3,4 +3,30 @@ require_relative 'config/environment'
 class App < Sinatra::Base
   # Write your code here!
 
+  get '/reversename/:name' do 
+    #binding.pry 
+    params["name"].reverse
+  end
+
+  get '/square/:number' do 
+    #binding.pry
+    variable= params["number"].to_i*params["number"].to_i
+    variable.to_s
+  end 
+
+  get '/say/:number/:phrase' do
+    #binding.pry
+    answer = ''
+    variable_number = params["number"].to_i
+    variable_number.times do
+      answer += params[:phrase] 
+    end
+    answer
+  end
+
+   get '/say/:word1/:word2/:word3/:word4/:word5' do
+   binding.pry
+   params["word1"].to_s
+   end
+ 
 end
